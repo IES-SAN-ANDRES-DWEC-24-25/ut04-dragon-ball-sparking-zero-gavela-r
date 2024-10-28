@@ -2,7 +2,13 @@
 
 class Luchador {
     // Implementa el constructor y los métodos necesarios
-  
+    constructor(nombre, vida, velocidad, ataque, defensa){
+      this.nombre = nombre;  
+      this.vida = vida;
+      this.velocidad = velocidad;
+      this.ataque = ataque;
+      this.defensa = defensa;
+    }
   
     /**
      * Realiza un ataque contra un oponente.
@@ -11,10 +17,20 @@ class Luchador {
      */
     atacar(oponente) {
       // Decidir si el ataque es esquivado
-     
-  
-      // Calcular daño
-      
+      let vida = oponente.vida
+      let velocidadAtaque = Math.floor(Math.random() * 10 + 1);
+      if(velocidadAtaque < 3){
+        console.log(`${oponente.nombre} a esquivado el ataque`);
+      }else if(this.ataque < oponente.defensa){
+         // Calcular daño
+        let daño = oponente.defensa - this.ataque;
+        if (this.ataque > oponente.defensa){
+          daño = daño * 1.1;
+          vida = oponente.vida - daño;
+        }
+        vida = oponente.vida - daño;
+        console.log(`${oponente.nombre} recibe un daño de ${daño}, su vida queda en un total de ${vida}`);
+      }
   
       // Asegurar que el daño no sea negativo
       
@@ -42,6 +58,6 @@ class Luchador {
      
     }
   }
-  
+ 
   module.exports = Luchador;
   
