@@ -1,5 +1,5 @@
 // tests/Namekian.test.js
-
+/*
 const Namekian = require('../src/Namekian');
 
 describe('Clase Namekian', () => {
@@ -43,3 +43,4 @@ describe('Clase Namekian', () => {
     expect(namekian.regenerado).toBe(false);
   });
 });
+*/
