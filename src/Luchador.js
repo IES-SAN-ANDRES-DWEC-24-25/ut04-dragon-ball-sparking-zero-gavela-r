@@ -24,22 +24,17 @@ class Luchador {
       }else if(this.ataque < oponente.defensa){
          // Calcular daño
         let daño = oponente.defensa - this.ataque;
+        // Asegurar que el daño no sea negativo
+        // Aplicar daño al oponente
+     
         if (this.ataque > oponente.defensa){
           daño = daño * 1.1;
           vida = oponente.vida - daño;
         }
         vida = oponente.vida - daño;
+        // Retornar resultado del ataque
         console.log(`${oponente.nombre} recibe un daño de ${daño}, su vida queda en un total de ${vida}`);
       }
-  
-      // Asegurar que el daño no sea negativo
-      
-  
-      // Aplicar daño al oponente
-     
-  
-      // Retornar resultado del ataque
-      
     }
   
     /**
