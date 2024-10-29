@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "start": "node src/index.js"
+    "test": "jest", 
+    "start": "node src/pruebas.js"
   },
   "keywords": [],
   "author": "",

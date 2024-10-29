@@ -2,7 +2,7 @@
 
 
 class Saiyan {
-
+  
   /**
    * Transforma al Saiyan en Super Saiyan, aumentando sus atributos.
    */
