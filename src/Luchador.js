@@ -19,16 +19,18 @@ class Luchador {
     getVida(){
       return this.salud;
     }
+    
     atacar(oponente) {
       // Decidir si el ataque es esquivado
       let daño = 0;
       let velocidadAtaque = Math.floor(Math.random() * 10 + 1);
+      console.log(velocidadAtaque);
       if(velocidadAtaque < 3){
-        
         let mensaje = (`${oponente.nombre} esquivó el ataque de ${this.nombre}!`);
-        return {daño , mensaje};
+        console.log(mensaje);
+        return  {daño, mensaje};
       } 
-       // Calcular daño
+      //  Calcular daño
       if(this.ataque < oponente.defensa){
         daño = this.ataque * 0.1;
       }else if(this.ataque > oponente.defensa){

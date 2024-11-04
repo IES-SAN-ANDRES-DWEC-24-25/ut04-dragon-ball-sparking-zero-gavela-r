@@ -1,9 +1,13 @@
 const Luchador = require('./Luchador');
+const Saiyan = require('./Saiyan');
 
-var luchador =  new Luchador("Goku",85, 90, 90);
-var oponente =  new Luchador("Vegeta",80, 85, 80);
+console.log(Saiyan);
 
-console.log(luchador)
-console.log(oponente);
+var luchador =  new Saiyan("Goku",85, 90, 90, true);
+var oponente =  new Saiyan("Vegeta",80, 85, 80, false);
+
 luchador.atacar(oponente);
 oponente.recibirDanio(23);
+
+luchador.transformar();
+luchador.revertirTransformacion();
