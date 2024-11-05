@@ -34,22 +34,16 @@ function simularBatalla(luchador1, luchador2) {
       let esquivar = Math.floor(Math.random() * 10 + 1);
 
       if(esquivar > 5){
-        if(atacante.ataque > oponente.defensa){
-          daño = atacante.ataque - oponente.defensa;
-        }else if(atacante.ataque < oponente.defensa){
-          daño = atacante.ataque * 0.1;
-          
-        }
-        oponente.salud -= daño;
-        console.log(`${atacante.nombre} hace ${daño.toFixed(2)} de daño a ${oponente.nombre}. Salud restante ${oponente.salud}`);
+        
+        daño = ataque(atacante, oponente);
+        oponente.recibirDanio(daño)
+
       }else{
         console.log(`${oponente.nombre} a esquivado el ataque`);
         console.log(`La salud de ${oponente.nombre} es de ${oponente.salud}`);
       }
 
-      if(oponente.salud <= 0){
-        oponente.salud = 0;
-      }
+      
        
       [atacante, oponente] = [oponente, atacante];
     }
@@ -60,6 +54,19 @@ function simularBatalla(luchador1, luchador2) {
     console.log(`El ganador de la batalla es ${ganador.nombre}!\n`);
     return ganador;
   }
+
+  function ataque(atacante, oponente) {
+    let daño = 0;
+    if (atacante.ataque >= oponente.defensa) {
+      daño = atacante.ataque - oponente.defensa;
+    } else {
+      daño = atacante.ataque * 0.1;
   
-  module.exports = simularBatalla;
+    }
   
+    console.log(`${atacante.nombre} hace ${daño.toFixed(2)} de daño a ${oponente.nombre}. Salud restante ${oponente.salud}`);
+    return daño;
+  }
+    
+  
+  module.exports = { simularBatalla, ataque };
