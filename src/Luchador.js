@@ -24,7 +24,7 @@ class Luchador {
       // Decidir si el ataque es esquivado
       let daño = 0;
       let velocidadAtaque = Math.floor(Math.random() * 10 + 1);
-      console.log(velocidadAtaque);
+    
       if(velocidadAtaque < 3){
         let mensaje = (`${oponente.nombre} esquivó el ataque de ${this.nombre}!`);
         console.log(mensaje);
@@ -39,7 +39,7 @@ class Luchador {
       oponente.recibirDanio(daño);
       let mensaje = `${this.nombre} ataca a ${oponente.nombre} y causa ${daño.toFixed(2)} de daño.`;
       console.log(mensaje);
-      console.log(daño)
+      
       console.log(`Es el turno de ${oponente.nombre}`);
       return {daño, mensaje};
     }

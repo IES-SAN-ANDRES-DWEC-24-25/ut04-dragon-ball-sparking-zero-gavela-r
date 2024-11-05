@@ -1,5 +1,5 @@
 // tests/simularBatalla.test.js
-/*
+
 const Luchador = require('../src/Luchador');
 const simularBatalla = require('../src/simularBatalla');
 
@@ -95,4 +95,3 @@ describe('Función simularBatalla', () => {
     Math.random.mockRestore();
   });
 });
-*/

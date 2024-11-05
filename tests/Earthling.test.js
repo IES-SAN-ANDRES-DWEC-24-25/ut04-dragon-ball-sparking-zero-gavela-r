@@ -1,5 +1,5 @@
 // tests/Earthling.test.js
-/*
+
 const Earthling = require('../src/Earthling');
 
 describe('Clase Earthling', () => {
@@ -40,4 +40,3 @@ describe('Clase Earthling', () => {
     expect(earthling.ataque).toBeCloseTo(123.2);
   });
 });
-*/
