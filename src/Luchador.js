@@ -78,6 +78,8 @@ class Luchador {
       this.salud -= danio; // Resta el daño a la salud
       if (this.salud < 0) {
         this.salud = 0; // Asegúrate de que la salud no baje de 0
+      }else if(this.salud > 100){
+        this.salud = 100;
       }
     }
 

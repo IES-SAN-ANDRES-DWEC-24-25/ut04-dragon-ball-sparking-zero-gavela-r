@@ -48,18 +48,10 @@ function simularBatalla(luchador1, luchador2) {
     if(Math.random() >= 0.5){
       daño = ataque(atacante, oponente);
       oponente.recibirDanio(daño);
-      console.log(`${atacante.nombre} hace ${daño.toFixed(2)} de daño a ${oponente.nombre}. Salud restante ${oponente.salud}`);
+      console.log(`${atacante.nombre} hace ${daño.toFixed(2)} de daño a ${oponente.nombre}. Salud restante ${oponente.salud.toFixed(2)}`);
 
     }else{
-      console.log(`${oponente.nombre} a esquivado el ataque. Salud restante ${oponente.salud}`);
-    }
-
-    if(atacante instanceof Saiyan && atacante.salud < 50  && !atacante.transformar()){
-      atacante.transformar();
-    }
-
-    if(atacante instanceof Earthling && atacante.salud < 70 && !atacante.usarTecnicaEspecial()){
-      atacante.usarTecnicaEspecial();
+      console.log(`${oponente.nombre} a esquivado el ataque. Salud restante ${oponente.salud.toFixed(2)}`);
     }
 
     if(atacante instanceof Namekian && atacante.salud < 40 && !atacante.regenerarSalud()){

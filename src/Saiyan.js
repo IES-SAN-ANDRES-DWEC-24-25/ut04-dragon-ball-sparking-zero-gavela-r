@@ -1,7 +1,7 @@
 // src/Saiyan.js
 
 const Luchador = require("./Luchador");
-
+  
 class Saiyan extends Luchador{
     constructor(nombre, velocidad, ataque, defensa, salud, esSuperSaiyan = false){
       super(nombre, velocidad, ataque, defensa, salud)
@@ -21,6 +21,21 @@ class Saiyan extends Luchador{
       console.log(`El ataque a aumentado a: ${this.ataque}`);
       console.log(`la defensa a aumentado a: ${this.defensa}`);
     }
+    
+  }
+
+  recibirDanio(danio) {
+    this.salud -= danio; // Resta el daño a la salud
+    if (this.salud < 0) {
+      this.salud = 0; // Asegúrate de que la salud no baje de 0
+    }else if(this.salud > 100){
+      this.salud = 100;
+    }
+
+    if(this.salud < 50){
+      this.transformar();
+    }
+    
     
   }
 
