@@ -19,7 +19,9 @@ class Torneo {
    * @returns {Luchador} - El campeón del torneo.
    */
   iniciar() {
-     let participantes = [...this.participantes]// Copiar el array de luchadores
+    let  luchador1;
+    let  luchador2;
+    let participantes = [...this.participantes];// Copiar el array de luchadores
     mezclarArray(participantes);
     console.log(`\nIniciando el torneo con ${participantes.length} luchadores!\n`);
     let ronda = 1;
@@ -27,8 +29,8 @@ class Torneo {
       console.log(`----- Ronda ${ronda} -----`);
       const ganadores = [];
       for(let k = 0; k < participantes.length; k += 2){
-        const luchador1 = participantes[k];
-        const luchador2 = participantes[k + 1];
+        luchador1 = participantes[k];
+        luchador2 = participantes[k + 1];
         const ganador = simularBatalla(luchador1, luchador2);
         ganadores.push(ganador);
       }

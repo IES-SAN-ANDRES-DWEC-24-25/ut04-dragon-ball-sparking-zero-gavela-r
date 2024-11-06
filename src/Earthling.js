@@ -18,6 +18,8 @@ class Earthling extends Luchador{
       console.log(`A aumentado el ataque a ${this.ataque}`);
     }
   }
+
+  
 }
 
 module.exports = Earthling;
