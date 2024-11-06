@@ -42,6 +42,7 @@ class Luchador {
     get velocidad(){
       return this.#velocidad;
     }
+
     
     atacar(oponente) {
       // Decidir si el ataque es esquivado
@@ -74,8 +75,10 @@ class Luchador {
      * @param {number} danio - Cantidad de daño recibido.
      */
     recibirDanio(danio) {
-      this.salud = this.salud - danio;
-      
+      this.salud -= danio; // Resta el daño a la salud
+      if (this.salud < 0) {
+        this.salud = 0; // Asegúrate de que la salud no baje de 0
+      }
     }
 
     set salud(vidaNueva){
@@ -86,6 +89,22 @@ class Luchador {
       }else {
         this.#salud = vidaNueva;
       }
+    }
+
+    set ataque(nuevoAtaque){
+      this.#ataque = nuevoAtaque;
+    }
+
+    set defensa(nuevaDefensa){
+      this.#defensa = nuevaDefensa;
+    }
+
+    set velocidad(nuevaVelocidad){
+      this.#velocidad = nuevaVelocidad;
+    }
+
+    set nombre(nuevoNombre){
+      this.#nombre = nuevoNombre;
     }
   
     /**

@@ -14,7 +14,8 @@ class Earthling extends Luchador{
     if(!this.tecnicaUsada){
       this.tecnicaUsada = true;
       this.ataque *= 1.4;
-      console.log(`${this.nombre} a usado un Kamehameha`);
+      console.log(`${this.nombre} a usado un una tecnica especial`);
+      console.log(`A aumentado el ataque a ${this.ataque}`);
     }
   }
 }

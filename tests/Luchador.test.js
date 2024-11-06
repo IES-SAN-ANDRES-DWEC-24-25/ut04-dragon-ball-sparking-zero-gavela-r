@@ -74,7 +74,7 @@ describe('Clase Luchador', () => {
     // Daño esperado: 60 * 0.1 = 6
     expect(resultado.daño).toBe(6);
     expect(oponente.salud).toBe(94);
-    expect(resultado.mensaje).toBe('Testeador ataca a Oponente y causa 54.00 de daño.');
+    expect(resultado.mensaje).toBe('Testeador ataca a Oponente y causa 6.00 de daño.');
 
     // Restaurar Math.random
     Math.random.mockRestore();
