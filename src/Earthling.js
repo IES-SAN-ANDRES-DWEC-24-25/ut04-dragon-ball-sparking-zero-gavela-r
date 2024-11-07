@@ -17,10 +17,9 @@ class Earthling extends Luchador{
   usarTecnicaEspecial() {
     if(!this.tecnicaUsada){
       this.tecnicaUsada = true;
-      this.ataque *= 1.1;
+      this.ataque *= 1.4;
       console.log(`${this.nombre} a usado un una tecnica especial`);
       console.log(`A aumentado el ataque a ${this.ataque.toFixed(0)}`);
-      this.#turnos = 0;
     }
      
   }
@@ -28,7 +27,7 @@ class Earthling extends Luchador{
   revertirTecnica(){
     if(this.tecnicaUsada){
       this.tecnicaUsada = false;
-      this.ataque /= 1.1;
+      this.ataque /= 1.4;
       console.log(`${this.nombre} a restaurado su ataque original`);
     }
   }
@@ -38,12 +37,18 @@ class Earthling extends Luchador{
     this.revertirTecnica();
   }
 
-  incrementarTurno(){
+  incrementarTurno() {
     this.#turnos++;
-    if(this.#turnos >= 5){
-      this.usarTecnicaEspecial();
+  
+    if (this.#turnos === 5) { 
+      console.log('TURNOOOOO');
+      this.usarTecnicaEspecial(); 
+      this.#turnos = 0; 
+    } else if (this.tecnicaUsada) {
+      this.revertirTecnica(); 
     }
   }
+  
 
   recibirDanio(danio) {
     this.salud -= danio; // Resta el daño a la salud

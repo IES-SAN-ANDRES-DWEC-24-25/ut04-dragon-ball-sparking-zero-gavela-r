@@ -1,7 +1,7 @@
 // src/simularBatalla.js
 
 const Earthling = require("./Earthling");
-const Luchador = require("./Luchador");
+
 
 /**
  * Simula una batalla entre dos luchadores.
@@ -42,12 +42,18 @@ function simularBatalla(luchador1, luchador2) {
   while(luchador1.estaVivo() && luchador2.estaVivo()){
     console.log(`Turno: ${contador}`);
       
-        luchador1.atacar(luchador2);
-        luchador2.atacar(luchador1);
-        
-      if(luchador1 instanceof Earthling){
-        luchador1.incrementarTurno();
+    luchador1.atacar(luchador2);
+    if (luchador1 instanceof Earthling) {
+      luchador1.incrementarTurno();
+    }
+    
+
+    if (luchador2.estaVivo()) {
+      luchador2.atacar(luchador1);
+      if (luchador2 instanceof Earthling) {
+        luchador2.incrementarTurno();
       }
+    }
       
       contador++;
     

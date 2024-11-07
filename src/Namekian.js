@@ -17,7 +17,7 @@ class Namekian extends Luchador{
    */
   regenerarSalud() {
     
-    if(this.salud < 40 && this.#regenerar > 0){
+    if(this.salud < 50 && this.#regenerar > 0){
       this.regenerado = true;
       this.salud = this.salud + 30;
       this.#regenerar -= 1; 

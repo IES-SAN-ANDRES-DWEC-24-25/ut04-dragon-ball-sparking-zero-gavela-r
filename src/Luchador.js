@@ -53,7 +53,7 @@ class Luchador {
       
     
       if(velocidadAtaque < 3){
-        let mensaje = (`${oponente.nombre} a esquivado el ataque. Salud restante ${oponente.salud.toFixed(2)}`);
+        let mensaje = (`${oponente.nombre} esquivó el ataque de ${this.nombre}!`);
         console.log(mensaje);
         return  {daño, mensaje};
       } 
@@ -64,10 +64,9 @@ class Luchador {
         daño = this.#ataque - oponente.defensa ;
       }
       oponente.recibirDanio(daño);
-      let mensaje =  `${this.#nombre} hace ${daño.toFixed(2)} de daño a ${oponente.nombre}. Salud restante ${oponente.salud.toFixed(2)}`;
+      let mensaje =  `${this.#nombre} ataca a ${oponente.nombre} y causa ${daño.toFixed(2)} de daño.`;
       console.log(mensaje);
      
-      
       console.log(`Es el turno de ${oponente.nombre}`);
       return {daño, mensaje};
     }
