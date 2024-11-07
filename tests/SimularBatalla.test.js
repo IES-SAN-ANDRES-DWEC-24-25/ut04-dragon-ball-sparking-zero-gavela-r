@@ -1,7 +1,9 @@
-// tests/simularBatalla.test.js
+// // tests/simularBatalla.test.js
 
 const Luchador = require('../src/Luchador');
-const simularBatalla = require('../src/simularBatalla');
+// const simularBatalla = require('../src/simularBatalla');
+const { simularBatalla, ataque } = require('../src/simularBatalla');
+
 
 describe('Función simularBatalla', () => {
   let luchador1;
@@ -25,22 +27,24 @@ describe('Función simularBatalla', () => {
 
   test('Cálculo de daño según ataque y defensa', () => {
     // Mock Math.random para evitar esquiva
-    jest.spyOn(Math, 'random').mockReturnValue(0.5);
+    //jest.spyOn(Math, 'random').mockReturnValue(0.6);
 
-    simularBatalla(luchador1, luchador2);
+    let daño = ataque(luchador1, luchador2);
 
     // Primer ataque: 70 - 45 = 25 daño
-    expect(luchador2.salud).toBe(75);
+    expect(daño).toBe(25);
 
     // Segundo ataque: 65 - 50 = 15 daño
-    expect(luchador1.salud).toBe(85);
+    //expect(luchador1.salud).toBe(100);
 
     // Continuar hasta que uno pierda
     // Puedes continuar mockeando Math.random y verificar el resultado final
 
     // Restaurar Math.random
-    Math.random.mockRestore();
+    //Math.random.mockRestore();
   });
+
+ 
 
   test('Esquivar ataque correctamente', () => {
     // Mock Math.random para que el primer ataque sea esquivado

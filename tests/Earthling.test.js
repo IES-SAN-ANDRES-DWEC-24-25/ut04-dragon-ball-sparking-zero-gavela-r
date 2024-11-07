@@ -1,4 +1,4 @@
-// tests/Earthling.test.js
+// // tests/Earthling.test.js
 
 const Earthling = require('../src/Earthling');
 

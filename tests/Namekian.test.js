@@ -1,4 +1,4 @@
-// tests/Namekian.test.js
+// // tests/Namekian.test.js
 
 const Namekian = require('../src/Namekian');
 

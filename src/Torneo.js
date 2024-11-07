@@ -1,6 +1,6 @@
 // src/Torneo.js
 
-const simularBatalla = require('./simularBatalla');
+const {simularBatalla} = require('./simularBatalla');
 const { esPotenciaDeDos, mezclarArray } = require('./utils');
 
 class Torneo {
@@ -9,21 +9,37 @@ class Torneo {
    * @param {Luchador[]} luchadores - Array de luchadores participantes.
    */
   constructor(luchadores) {
-    
+   if(!esPotenciaDeDos()){
+    throw new Error('El número de luchadores debe ser una potencia de 2.')
+   }
+   this.participantes = [...luchadores]
   }
-
   /**
    * Inicia el torneo, simulando las rondas hasta determinar un campeón.
    * @returns {Luchador} - El campeón del torneo.
    */
   iniciar() {
-    let participantes ; // Copiar el array de luchadores
+    let  luchador1;
+    let  luchador2;
+    let participantes = [...this.participantes];// Copiar el array de luchadores
     mezclarArray(participantes);
     console.log(`\nIniciando el torneo con ${participantes.length} luchadores!\n`);
-
-    // Simular rondas hasta que quede un solo luchador
+    let ronda = 1;
+    while(participantes.length > 1){
+      console.log(`----- Ronda ${ronda} -----`);
+      const ganadores = [];
+      for(let k = 0; k < participantes.length; k += 2){
+        luchador1 = participantes[k];
+        luchador2 = participantes[k + 1];
+        const ganador = simularBatalla(luchador1, luchador2);
+        ganadores.push(ganador);
+      }
+      participantes = ganadores
+      ronda++;
+    }
     
-
+    // Simular rondas hasta que quede un solo luchador
+   
     const campeón = participantes[0];
     console.log(`El campeón del torneo es ${campeón.nombre}!\n`);
     return campeón;

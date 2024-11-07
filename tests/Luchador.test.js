@@ -19,6 +19,21 @@ describe('Clase Luchador', () => {
     expect(luchador.salud).toBe(100);
   });
 
+  test('Fijar valor salud', () => {
+    
+    luchador.salud = -1;
+    expect(luchador.salud).toBe(0);
+
+    luchador.salud = 101;
+    expect(luchador.salud).toBe(100);
+
+    luchador.salud = 50;
+    expect(luchador.salud).toBe(50);
+
+    luchador.salud = 100;
+    expect(luchador.salud).toBe(100);
+   
+  });
   test('Método atacar: daño se calcula correctamente y salud del oponente se actualiza', () => {
     // Mock Math.random para evitar esquiva
     jest.spyOn(Math, 'random').mockReturnValue(0.5); // No esquiva
@@ -49,8 +64,8 @@ describe('Clase Luchador', () => {
   });
 
   test('Método atacar: defensa mayor que ataque, daño reducido al 10%', () => {
-    oponente.defensa = 70; // Mayor que ataque 60
-
+     luchador = new Luchador('Testeador', 50, 60, 40);
+     oponente = new Luchador('Oponente', 45, 55, 70);
     // Mock Math.random para evitar esquiva
     jest.spyOn(Math, 'random').mockReturnValue(0.5); // No esquiva
 
