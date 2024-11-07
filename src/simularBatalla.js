@@ -34,7 +34,10 @@ function simularBatalla(luchador1, luchador2) {
       console.log(`${atacante.nombre} tiene mas velocidad y ataca primero`);
     }
   
-    
+    console.log(atacante.ataque);
+    console.log(atacante.defensa);
+    console.log(oponente.ataque);
+    console.log(oponente.defensa);
 
   // Simular turnos hasta que uno de los luchadores pierda
   
@@ -44,6 +47,8 @@ function simularBatalla(luchador1, luchador2) {
 
    
     console.log(`Turno: ${contador}`);
+
+    
     
     if(Math.random() >= 0.5){
       daño = ataque(atacante, oponente);
@@ -53,22 +58,28 @@ function simularBatalla(luchador1, luchador2) {
     }else{
       console.log(`${oponente.nombre} a esquivado el ataque. Salud restante ${oponente.salud.toFixed(2)}`);
     }
-
-    if(atacante instanceof Namekian && atacante.salud < 40 && !atacante.regenerarSalud()){
-      atacante.regenerarSalud();
-    }
-
+    
     contador++;
 
-    
+    if(atacante instanceof Earthling){
+      atacante.incrementarTurno();
+    }
     
     [atacante, oponente] = [oponente, atacante];
   }
 
   
-  if(atacante instanceof Saiyan  && !atacante.revertirTransformacion() && oponente instanceof Saiyan && !oponente.revertirTransformacion()){
+  if(atacante instanceof Saiyan  && !atacante.revertirTransformacion()){
     atacante.revertirTransformacion();
+  }
+
+  if(oponente instanceof Saiyan && !oponente.revertirTransformacion()){
     oponente.revertirTransformacion();
+  }
+
+  if(atacante instanceof Earthling  && !atacante.revertirTecnica() && oponente instanceof Earthling && !oponente.revertirTecnica()){
+    atacante.revertirTecnica();
+    oponente.revertirTecnica();
   }
   
   

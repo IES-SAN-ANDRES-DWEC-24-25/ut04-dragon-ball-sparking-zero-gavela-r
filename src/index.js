@@ -7,14 +7,15 @@ const Torneo = require('./Torneo');
 
 // Crear luchadores de prueba con diferentes razas
 const luchadores = [
-    new Namekian('Piccolo', 80, 60, 70),
-    // new Saiyan('Goku', 100, 95, 85),
-    // new Saiyan('Vegeta', 100, 90, 90),
-    new Earthling('Krillin', 65, 60, 50),
-    // new Earthling('Ten Shin Han', 75, 60, 50),
-    // new Saiyan('Gohan', 95, 95, 85),
-    // new Saiyan('Trunks', 90, 80, 75),
-    // new Earthling('Yamcha', 50, 40, 50),
+    new Namekian('Piccolo', 80, 75, 70),
+    new Saiyan('Goku', 95, 90, 85),
+    new Saiyan('Vegeta', 93, 88, 84),
+    new Earthling('Krillin', 70, 65, 55),
+    new Earthling('Ten Shin Han', 75, 68, 60),
+    new Saiyan('Gohan', 90, 88, 80),
+    new Saiyan('Trunks', 88, 85, 78),
+    new Earthling('Yamcha', 60, 50, 45)
+    
 ];
 
 // Crear y iniciar el torneo

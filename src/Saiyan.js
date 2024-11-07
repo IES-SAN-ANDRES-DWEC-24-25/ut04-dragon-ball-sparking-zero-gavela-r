@@ -3,9 +3,11 @@
 const Luchador = require("./Luchador");
   
 class Saiyan extends Luchador{
+  
     constructor(nombre, velocidad, ataque, defensa, salud, esSuperSaiyan = false){
       super(nombre, velocidad, ataque, defensa, salud)
       this.esSuperSaiyan = esSuperSaiyan;
+      
     }  
   /**
    * Transforma al Saiyan en Super Saiyan, aumentando sus atributos.
@@ -16,6 +18,7 @@ class Saiyan extends Luchador{
       this.velocidad *= 1.3;
       this.ataque *= 1.5;
       this.defensa *= 1.2;
+      this.energia = 0;
       console.log(`${this.nombre} se ha transformado en super saiyan`);
       console.log(`La velocidad a aumentado a: ${this.velocidad}`);
       console.log(`El ataque a aumentado a: ${this.ataque}`);
@@ -34,10 +37,11 @@ class Saiyan extends Luchador{
 
     if(this.salud < 50){
       this.transformar();
+      
     }
-    
-    
   }
+
+
 
   /**
    * Revertir la transformación de Super Saiyan.
