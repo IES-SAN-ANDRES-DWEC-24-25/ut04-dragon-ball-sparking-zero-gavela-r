@@ -21,13 +21,16 @@ class Namekian extends Luchador{
       this.regenerado = true;
       this.salud = this.salud + 30;
       this.#regenerar -= 1; 
-      console.log(`REGENERACION RESTANTE: ${this.#regenerar}`);
+      console.log(`${this.nombre} ha regenrado su salud`);
       if(this.#regenerar == 0){
         this.detenerRegeneracion();
-      }
-      console.log(`${this.nombre} ha regenrado su salud`);
+      } 
     }
 
+  }
+
+  reiniciarLuchador(){   
+    this.salud = 100;
   }
 
   detenerRegeneracion(){

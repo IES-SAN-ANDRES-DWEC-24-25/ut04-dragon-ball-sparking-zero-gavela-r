@@ -36,12 +36,14 @@ class Saiyan extends Luchador{
     }
 
     if(this.salud < 50){
-      this.transformar();
-      
+      this.transformar();      
     }
   }
 
-
+  reiniciarLuchador(){   
+      this.salud = 100
+      this.revertirTransformacion();    
+  }
 
   /**
    * Revertir la transformación de Super Saiyan.

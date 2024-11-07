@@ -47,10 +47,13 @@ class Luchador {
     atacar(oponente) {
       // Decidir si el ataque es esquivado
       let daño = 0;
+  
       let velocidadAtaque = Math.floor(Math.random() * 10 + 1);
+
+      
     
       if(velocidadAtaque < 3){
-        let mensaje = (`${oponente.nombre} esquivó el ataque de ${this.#nombre}!`);
+        let mensaje = (`${oponente.nombre} a esquivado el ataque. Salud restante ${oponente.salud.toFixed(2)}`);
         console.log(mensaje);
         return  {daño, mensaje};
       } 
@@ -61,8 +64,9 @@ class Luchador {
         daño = this.#ataque - oponente.defensa ;
       }
       oponente.recibirDanio(daño);
-      let mensaje = `${this.#nombre} ataca a ${oponente.nombre} y causa ${daño.toFixed(2)} de daño.`;
+      let mensaje =  `${this.#nombre} hace ${daño.toFixed(2)} de daño a ${oponente.nombre}. Salud restante ${oponente.salud.toFixed(2)}`;
       console.log(mensaje);
+     
       
       console.log(`Es el turno de ${oponente.nombre}`);
       return {daño, mensaje};
@@ -116,10 +120,15 @@ class Luchador {
     estaVivo() {
       if(this.salud > 0){
         return true;
+        
       }else{
         return false;
       }
 
+    }
+
+    reiniciarLuchador(){   
+      this.#salud = 100;
     }
 }
  

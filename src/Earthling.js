@@ -33,11 +33,15 @@ class Earthling extends Luchador{
     }
   }
 
+  reiniciarLuchador(){   
+    this.salud = 100;
+    this.revertirTecnica();
+  }
+
   incrementarTurno(){
     this.#turnos++;
     if(this.#turnos >= 5){
       this.usarTecnicaEspecial();
-      
     }
   }
 

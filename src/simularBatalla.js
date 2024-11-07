@@ -1,8 +1,7 @@
 // src/simularBatalla.js
 
 const Earthling = require("./Earthling");
-const Namekian = require("./Namekian");
-const Saiyan = require("./Saiyan");
+
 
 /**
  * Simula una batalla entre dos luchadores.
@@ -13,91 +12,70 @@ const Saiyan = require("./Saiyan");
 function simularBatalla(luchador1, luchador2) {
   console.log("Siguiente combate");
   console.log(`\nComienza la batalla entre ${luchador1.nombre} y ${luchador2.nombre}!`);
-  let atacante = luchador1;
-  let oponente = luchador2;
   let daño = 0;
   let contador = 1;
-  atacante.salud = 100;
-  oponente.salud = 100;
+
+
+
 
   
   // Determinar quién ataca primero basado en la velocidad
   
     // Si la velocidad es igual, elegir al azar
 
-    
-
-    if((atacante.velocidad < oponente.velocidad) || (atacante.velocidad === oponente.velocidad && Math.random() < 0.5)){
-      [atacante, oponente] = [oponente, atacante];
-      console.log(`${atacante.nombre} tiene mayor velocidad y ataca primero`);
+    if((luchador1.velocidad < luchador2.velocidad) || (luchador1.velocidad === luchador2.velocidad && Math.random() < 0.2)){
+      [luchador1, luchador2] = [luchador2, luchador1];
+      console.log(`${luchador1.nombre} tiene mayor velocidad y ataca primero`);
     }else{
-      console.log(`${atacante.nombre} tiene mas velocidad y ataca primero`);
+      console.log(`${luchador1.nombre} tiene mas velocidad y ataca primero`);
     }
-  
-    console.log(atacante.ataque);
-    console.log(atacante.defensa);
-    console.log(oponente.ataque);
-    console.log(oponente.defensa);
+    console.log(luchador1.salud);
+    console.log(luchador2.salud);
+    console.log(luchador1.ataque);
+    console.log(luchador1.defensa);
+    console.log(luchador2.ataque);
+    console.log(luchador2.defensa);
 
   // Simular turnos hasta que uno de los luchadores pierda
   
   
 
-  while(atacante.salud > 0 && oponente.salud > 0){
-
-   
+  while(luchador1.estaVivo() && luchador2.estaVivo()){
     console.log(`Turno: ${contador}`);
-
-    
-    
-    if(Math.random() >= 0.5){
-      daño = ataque(atacante, oponente);
-      oponente.recibirDanio(daño);
-      console.log(`${atacante.nombre} hace ${daño.toFixed(2)} de daño a ${oponente.nombre}. Salud restante ${oponente.salud.toFixed(2)}`);
-
-    }else{
-      console.log(`${oponente.nombre} a esquivado el ataque. Salud restante ${oponente.salud.toFixed(2)}`);
+      if(Math.random() >= 0.5){
+        luchador1.atacar(luchador2);
+        luchador2.atacar(luchador1);
+        // luchador2.recibirDanio(daño);
+        
+      if(luchador1 instanceof Earthling){
+        luchador1.incrementarTurno();
+      }
+      
+      contador++;
     }
+
+    [luchador1, luchador2] = [luchador2, luchador1];
+      
+    const ganador = luchador1.salud > 0 ? luchador1 : luchador2;
     
-    contador++;
+    ganador.reiniciarLuchador();
 
-    if(atacante instanceof Earthling){
-      atacante.incrementarTurno();
-    }
-    
-    [atacante, oponente] = [oponente, atacante];
-  }
-
-  
-  if(atacante instanceof Saiyan  && !atacante.revertirTransformacion()){
-    atacante.revertirTransformacion();
-  }
-
-  if(oponente instanceof Saiyan && !oponente.revertirTransformacion()){
-    oponente.revertirTransformacion();
-  }
-
-  if(atacante instanceof Earthling  && !atacante.revertirTecnica() && oponente instanceof Earthling && !oponente.revertirTecnica()){
-    atacante.revertirTecnica();
-    oponente.revertirTecnica();
+    console.log(`El ganador de la batalla es ${ganador.nombre}!\n`);
+    return ganador;
   }
   
-  
-    
-  const ganador = atacante.salud > 0 ? atacante : oponente;
-  console.log(`El ganador de la batalla es ${ganador.nombre}!\n`);
-  return ganador;
 }
 
-function ataque(atacante, oponente) {
-  let daño = 0;
-  if (atacante.ataque >= oponente.defensa) {
-    daño = atacante.ataque - oponente.defensa;
-  } else {
-    daño = atacante.ataque * 0.1;
-  }
-  return daño;
-}
+
+// function ataque(atacante, luchador2) {
+//   let daño = 0;
+//   if (atacante.ataque >= luchador2.defensa) {
+//     daño = atacante.ataque - luchador2.defensa;
+//   } else {
+//     daño = atacante.ataque * 0.1;
+//   }
+//   return daño;
+// }
   
 
-module.exports = { simularBatalla, ataque };
+module.exports =  {simularBatalla};
