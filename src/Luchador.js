@@ -120,7 +120,6 @@ class Luchador {
     estaVivo() {
       if(this.salud > 0){
         return true;
-        
       }else{
         return false;
       }

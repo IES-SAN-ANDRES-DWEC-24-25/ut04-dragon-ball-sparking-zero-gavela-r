@@ -1,7 +1,7 @@
 // src/simularBatalla.js
 
 const Earthling = require("./Earthling");
-
+const Luchador = require("./Luchador");
 
 /**
  * Simula una batalla entre dos luchadores.
@@ -12,7 +12,6 @@ const Earthling = require("./Earthling");
 function simularBatalla(luchador1, luchador2) {
   console.log("Siguiente combate");
   console.log(`\nComienza la batalla entre ${luchador1.nombre} y ${luchador2.nombre}!`);
-  let daño = 0;
   let contador = 1;
 
 
@@ -42,40 +41,29 @@ function simularBatalla(luchador1, luchador2) {
 
   while(luchador1.estaVivo() && luchador2.estaVivo()){
     console.log(`Turno: ${contador}`);
-      if(Math.random() >= 0.5){
+      
         luchador1.atacar(luchador2);
         luchador2.atacar(luchador1);
-        // luchador2.recibirDanio(daño);
         
       if(luchador1 instanceof Earthling){
         luchador1.incrementarTurno();
       }
       
       contador++;
-    }
+    
 
     [luchador1, luchador2] = [luchador2, luchador1];
       
-    const ganador = luchador1.salud > 0 ? luchador1 : luchador2;
+    
+  }
+
+  const ganador = luchador1.salud > 0 ? luchador1 : luchador2;
     
     ganador.reiniciarLuchador();
 
     console.log(`El ganador de la batalla es ${ganador.nombre}!\n`);
     return ganador;
-  }
   
 }
-
-
-// function ataque(atacante, luchador2) {
-//   let daño = 0;
-//   if (atacante.ataque >= luchador2.defensa) {
-//     daño = atacante.ataque - luchador2.defensa;
-//   } else {
-//     daño = atacante.ataque * 0.1;
-//   }
-//   return daño;
-// }
-  
 
 module.exports =  {simularBatalla};

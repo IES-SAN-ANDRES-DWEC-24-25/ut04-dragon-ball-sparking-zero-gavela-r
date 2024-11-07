@@ -13,7 +13,7 @@ const luchadores = [
     new Earthling('Krillin', 70, 65, 55),
     new Earthling('Ten Shin Han', 75, 68, 60),
     new Saiyan('Gohan', 90, 88, 80),
-    new Saiyan('Trunks', 88, 85, 78),
+    new Saiyan('Trunks', 88, 80, 78),
     new Earthling('Yamcha', 60, 50, 45)
     
 ];
